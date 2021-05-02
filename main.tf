@@ -22,6 +22,7 @@ resource "aws_s3_bucket_object" "pages" {
   bucket = aws_s3_bucket.bucket.id
   key    = trimprefix(each.value, "${local.webpage_root}/")
   source = each.value
+  etag   = filemd5(each.value)
 
   acl          = "public-read"
   content_type = "text/html"

@@ -69,6 +69,11 @@
       <td class="completedGame">Yes</td>
     </tr>
     <tr>
+      <td>Metal Gear Solid: Peacewalker</td>
+      <td>Dad</td>
+      <td class="inProgressGame">No</td>
+    </tr>
+    <tr>
       <td>Metal Gear Rising: Revengance</td>
       <td>Cade</td>
       <td class="unplayedGame">No</td>
