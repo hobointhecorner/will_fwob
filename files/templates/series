@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Will FWOB Play {{ Series }}?</title>
+  </head>
+
+<style>
+  p {
+    font-size:160%;
+    text-align:center;
+  }
+
+  h1 {
+    font-size:300%;
+    text-align:center;
+  }
+
+  #table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .completedGame {
+    background-color: lightgreen;
+  }
+
+  .inProgressGame {
+    background-color: lightgoldenrodyellow;
+  }
+
+  .unplayedGame {
+    background-color: lightcoral;
+  }
+
+</style>
+
+<body>
+  <p>Will FWOB play the {{ Series }} series?</p>
+  <h1>YES</h1>
+  <p>{{ Caption }}</p>
+  <table id="table">
+    <tr>
+      <th>Game</th>
+      <th>Boy</th>
+      <th>Done?</th>
+    </tr>
+    <tr>
+      <td>{{Title}}</td>
+      <td>{{Boy}}</td>
+      <td class="completedGame">{{Yes|No}}</td>
+    </tr>
+  </table>
+</body>
+
+</html>
