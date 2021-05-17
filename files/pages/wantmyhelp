@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Will FWOB want my help playing game?</title>
+  </head>
+
+  <style>
+    p {
+      font-size: 160%;
+      text-align: center;
+    }
+    h1 {
+      font-size:300%;
+      text-align:center;
+      color:crimson;
+    }
+  </style>
+
+  <body>
+    <p>Will FWOB want my help playing (game)?</p>
+    <p>If they want help, they'll ask for it</p>
+    <p>but until that happens</p>
+    <h1>shut up and watch the game :)</h1>
+  </body>
+</html>
