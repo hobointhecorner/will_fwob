@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Will FWOB play the new Mario Golf?</title>
+  </head>
+
+  <style>
+    p {
+      font-size: 160%;
+      text-align: center;
+    }
+    h1 {
+      font-size:300%;
+      text-align:center;
+      color:orangered;
+    }
+  </style>
+
+  <body>
+    <p>Will FWOB play the new Mario Golf?</p>
+    <h1>MAYBE</h1>
+    <h1>Who knows?</h1>
+    <hr />
+    <p>Has FWOB seen [thing] about the new Mario Golf?</p>
+    <h1>Maybe!  Likely, even!</h1>
+    <hr />
+    <p>I cannot believe you children made this page necessary before release, christ.</p>
+  </body>
+</html>
