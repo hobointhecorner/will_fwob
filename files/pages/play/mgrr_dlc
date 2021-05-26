@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Will FWOB Play the MGRR DLC?</title>
+  </head>
+
+  <style>
+    p {
+      font-size: 160%;
+      text-align: center;
+    }
+    h1 {
+      font-size:300%;
+      text-align:center;
+      color:crimson;
+    }
+  </style>
+
+  <body>
+    <p>Will FWOB Play the MGRR DLC?</p>
+    <h1>Probably not!</h1>
+    <p>But it's free!</p>
+    <h1>so was your mother</h1>
+    <h1 style="font-size: 250%;">"free" doesn't mean "quality"</h1>
+  </body>
+</html>
