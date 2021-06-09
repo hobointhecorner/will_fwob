@@ -5,15 +5,16 @@
 
   <style>
     p {
-      font-size: 160%;
+      font-size: 600%;
       text-align: center;
+      color: crimson;
     }
   </style>
 
   <body>
-    <p>Its still there.</p>
-    <p>growing</p>
-    <p>waiting</p>
-    <p style="font-style: italic; color: crimson">learning</p>
+    <p>Its dead, billy</p>
+    <p>o7 to a real one</p>
+    <p>...</p>
+    <p>:(</p>
   </body>
 </html>
