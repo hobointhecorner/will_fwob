@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <style>
+    h1 {
+      font-size:600%;
+      text-align:center;
+      color:orangered;
+    }
+  </style>
+
+  <body>
+    <h1>:)</h1>
+  </body>
+</html>
