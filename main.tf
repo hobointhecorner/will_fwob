@@ -2,9 +2,27 @@ locals {
   webpage_root = "files/pages"
 }
 
+resource "aws_route53_zone" "zone" {
+  name = var.bucket_name
+}
+
+resource "aws_route53_record" "domain" {
+  zone_id = aws_route53_zone.zone.zone_id
+  name    = aws_route53_zone.zone.name
+  type    = "A"
+
+  alias {
+    name                   = aws_s3_bucket.bucket.website_domain
+    zone_id                = aws_s3_bucket.bucket.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
   acl    = "public-read"
+
+  force_destroy = var.force_destroy
 
   policy = templatefile(
     "${path.module}/files/bucket_policy.json.tmpl",

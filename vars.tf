@@ -5,5 +5,10 @@ variable "aws_region" {
 
 variable "bucket_name" {
   type    = string
-  default = "will-fwob"
+  default = "willfwob.co"
+}
+
+variable "force_destroy" {
+  type    = bool
+  default = false
 }
