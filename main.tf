@@ -45,3 +45,14 @@ resource "aws_s3_bucket_object" "pages" {
   acl          = "public-read"
   content_type = "text/html"
 }
+
+resource "aws_s3_bucket_object" "redirects" {
+  for_each = var.website_redirects
+
+  bucket           = aws_s3_bucket.bucket.id
+  key              = each.key
+  website_redirect = each.value
+
+  acl          = "public-read"
+  content_type = "text/html"
+}
