@@ -15,22 +15,32 @@ resource "aws_route53_zone" "zone" {
 #
 
 resource "aws_s3_bucket" "domain" {
-  bucket = var.bucket_name
-  acl    = "public-read"
-
+  bucket        = var.bucket_name
   force_destroy = var.force_destroy
+}
 
+resource "aws_s3_bucket_acl" "domain" {
+  bucket = aws_s3_bucket.domain.bucket
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_policy" "domain" {
+  bucket = aws_s3_bucket.domain.bucket
   policy = templatefile(
     "${path.module}/files/bucket_policy.json.tmpl",
     { bucket_name = var.bucket_name }
   )
+}
 
-  website {
-    index_document = "index.html"
+resource "aws_s3_bucket_website_configuration" "domain" {
+  bucket = aws_s3_bucket.domain.bucket
+
+  index_document {
+    suffix = "index.html"
   }
 }
 
-resource "aws_s3_bucket_object" "index" {
+resource "aws_s3_object" "index" {
   bucket  = aws_s3_bucket.domain.id
   key     = "index.html"
   content = local.index_content
@@ -40,7 +50,7 @@ resource "aws_s3_bucket_object" "index" {
   content_type = "text/html"
 }
 
-resource "aws_s3_bucket_object" "pages" {
+resource "aws_s3_object" "pages" {
   for_each = fileset(path.module, "${local.webpage_root}/**")
 
   bucket = aws_s3_bucket.domain.id
@@ -71,22 +81,38 @@ resource "aws_route53_record" "domain" {
 resource "aws_s3_bucket" "redirects" {
   for_each = var.website_redirects
 
-  bucket = "${each.key}.${aws_route53_zone.zone.name}"
-  acl    = "public-read"
-
+  bucket        = "${each.key}.${aws_route53_zone.zone.name}"
   force_destroy = var.force_destroy
+}
 
+resource "aws_s3_bucket_acl" "redirects" {
+  for_each = aws_s3_bucket.redirects
+
+  bucket = each.value.bucket
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_policy" "redirects" {
+  for_each = aws_s3_bucket.redirects
+
+  bucket = each.value.bucket
   policy = templatefile(
     "${path.module}/files/bucket_policy.json.tmpl",
     { bucket_name = "${each.key}.${aws_route53_zone.zone.name}" }
   )
+}
 
-  website {
-    index_document = "index.html"
+resource "aws_s3_bucket_website_configuration" "redirects" {
+  for_each = aws_s3_bucket.redirects
+
+  bucket = each.value.bucket
+
+  index_document {
+    suffix = "index.html"
   }
 }
 
-resource "aws_s3_bucket_object" "redirects" {
+resource "aws_s3_object" "redirects" {
   for_each = var.website_redirects
 
   bucket           = aws_s3_bucket.redirects[each.key].id
